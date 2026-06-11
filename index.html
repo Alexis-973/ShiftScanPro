@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ShiftScan Pro">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2997/2997933.png">
 <title>ShiftScan Pro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,7 +27,7 @@
   --success:#16a34a;--danger:#dc2626;--warn:#d97706;--info:#0284c7;--cost:#7c3aed
 }
 html,body{height:100%;overflow:hidden}
-body{background:var(--bg);color:var(--text);font-family:var(--font)}
+body{background:var(--bg);color:var(--text);font-family:var(--font);padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
 .app{display:flex;flex-direction:column;height:100%;overflow:hidden}
 
 /* ── TOPBAR ── */
