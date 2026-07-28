@@ -4,7 +4,7 @@
    Bump CACHE_VERSION on every deploy so old cached copies
    on iPads get replaced automatically.
 ═══════════════════════════════════════════════════ */
-const CACHE_VERSION = 'shiftscan-v4';
+const CACHE_VERSION = 'shiftscan-v5';
 const CACHE_FILES = [
   './index.html',
   './manifest.json',
