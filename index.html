@@ -688,7 +688,7 @@ function fmtTime(d)  { const dt=parseNaive(d); return dt ? dt.toLocaleTimeString
 function fmtDate(d)  { const dt=parseNaive(d); return dt ? dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—'; }
 function fmtShort(d) { const dt=parseNaive(d); return dt ? dt.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}) : '—'; }
 function fmtDateTime(d) { return d ? fmtDate(d) + ' ' + fmtShort(d) : '—'; }
-// For fields STORED AS UTC (run opened_at/closed_at, device last_seen): convert to local.
+// For fields STORED AS UTC (run opened_at, device last_seen): convert to local.
 // (clock_in/clock_out are stored as LOCAL wall-clock and use fmtDateTime/parseNaive above.)
 function fmtDateTimeUTC(d) {
   if (!d) return '—';
@@ -1246,7 +1246,7 @@ async function loadSupRunHistory() {
       <td>${r.cost_center_name||'—'}</td>
       <td>${r.phase_name||'—'}</td>
       <td style="font-size:12px">${fmtDateTimeUTC(r.opened_at)}</td>
-      <td style="font-size:12px">${r.closed_at ? fmtDateTimeUTC(r.closed_at) : '—'}</td>
+      <td style="font-size:12px">${r.closed_at ? fmtDateTime(r.closed_at) : '—'}</td>
       <td><span class="tag ${r.status==='active'?'tag-active':r.status==='on_break'?'tag-break':'tag-closed'}">${r.status}</span></td>
     </tr>`).join('');
   } catch(e) {}
