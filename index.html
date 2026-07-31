@@ -1371,8 +1371,8 @@ async function supManualPunch() {
         emp_id: selectedManualEmp.emp_id,
         run_id: activeRun?.id || null,
         line_id: deviceLineId,
-        clock_in: clockIn ? new Date(clockIn).toISOString() : null,
-        clock_out: clockOut ? new Date(clockOut).toISOString() : null,
+        clock_in: clockIn ? clockIn + ':00' : null,
+        clock_out: clockOut ? clockOut + ':00' : null,
         notes: notes || null
       })
     });
