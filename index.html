@@ -979,11 +979,12 @@ async function submitPin() {
       return;
     }
     currentUser = user;
+    const targetTab = pinTarget || user.role;
     closePinModal();
     if (user.role === 'admin') {
       if (!appData.employees.length) { try { await loadAppData(); } catch(e) {} }
     }
-    switchTab(pinTarget || user.role);
+    switchTab(targetTab);
     setSyncStatus('ok');
   } catch(e) {
     pinError('Invalid PIN');
@@ -1573,9 +1574,9 @@ async function addProduct() {
   const pid  = document.getElementById('prod-id').value.trim();
   const po   = document.getElementById('prod-po').value.trim();
   const notes= document.getElementById('prod-notes').value.trim();
-  if (!name || !pid || !po) { showToast('Product name, ID and PO are required', 'warn'); return; }
+  if (!name || !pid) { showToast('Product name and ID are required', 'warn'); return; }
   try {
-    await apiFetch('/products', { method:'POST', body: JSON.stringify({ product_name:name, product_id:pid, po, country_of_origin:null, notes:notes||null }) });
+    await apiFetch('/products', { method:'POST', body: JSON.stringify({ product_name:name, product_id:pid, po: po || null, country_of_origin:null, notes:notes||null }) });
     showToast('Product added', 'success');
     ['prod-name','prod-id','prod-po','prod-notes'].forEach(id => document.getElementById(id).value = '');
     await loadAppData();
